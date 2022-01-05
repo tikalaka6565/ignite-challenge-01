@@ -13,6 +13,9 @@ module.exports = {
     filename: 'bundle.js'
   },
   resolve: {
+    fallback: {
+      util: require.resolve("util/")
+    },
     extensions: ['.js', '.jsx', '.ts', '.tsx']
   },
   devServer: {
@@ -20,7 +23,7 @@ module.exports = {
     hot: true,
   },
   plugins: [
-    isDevelopment && new ReactRefreshWebpackPlugin(),  
+    isDevelopment && new ReactRefreshWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'public', 'index.html')
     })
